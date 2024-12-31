@@ -9,6 +9,10 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+
     strategy:
       fail-fast: false
       matrix:
@@ -19,16 +23,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: List directory
+      run: ls -R
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        source-root: src/main/java # 소스 코드 루트를 명시
+        source-root: ./src/main/java
 
-    - if: matrix.build-mode == 'manual'
-      run: |
-        ./gradlew build   # Gradle 사용 시
-        # mvn clean install # Maven 사용 시
+    - name: Build project
+      if: matrix.build-mode == 'manual'
+      run: mvn clean install
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
