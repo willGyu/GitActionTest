@@ -43,7 +43,7 @@ public class HomeController {
 
 	@ModelAttribute("user")
 	public User createUserSession() {
-		// »õ·Î¿î ¼¼¼Ç °ªÀ» ¹ÝÈ¯ÇÏ¸é ¼¼¼Ç¿¡ ÀúÀåµÊ
+		// ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		return new User("defaultUser", "defaultEmail@example.com");
 	}
 
@@ -61,7 +61,7 @@ public class HomeController {
 		model.addAttribute("item", "ITWILL");
 
 		System.out.println(model.containsAttribute("item"));
-
+dddd
 		return "home";
 	}
 
